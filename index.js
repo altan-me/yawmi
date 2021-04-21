@@ -1,0 +1,37 @@
+"use strict";
+
+const express = require("express");
+const app = express();
+const path = require("path");
+const requestIp = require("request-ip");
+app.use(requestIp.mw());
+
+const port = process.env.PORT || "8000";
+app.use(express.json());
+
+// App Configuration
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "pug");
+
+//Routes
+
+//Return IP on index page
+app.get("/", (req, res) => {
+  const ip = req.clientIp;
+  res.render("index", { title: "IP", message: `${ip}` });
+});
+
+// 404
+app.use(function (req, res, next) {
+  res.status(404).send(res.render("404", { title: "404" }));
+});
+
+// 500
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send(res.render("500", { title: "500" }));
+});
+
+app.listen(port, () => {
+  console.log(`Listening to requests on http://localhost:${port}`);
+});
