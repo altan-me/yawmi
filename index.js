@@ -13,12 +13,12 @@ app.use(express.json());
 // App Configuration
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
+app.set("trust proxy", "loopback, linklocal, uniquelocal");
 
 //Routes
 
 //Return IP on index page
 app.get("/", (req, res) => {
-  // const ip = req.clientIp;
   let ip = req.cf_ip;
   // let ip = req.headers["cf-connecting-ip"] || req.headers["x-forwarded-for"];
   // let ip = req.socket.remoteAddress;
