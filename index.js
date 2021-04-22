@@ -1,12 +1,13 @@
 "use strict";
 
+const cloudflare = require("cloudflare-express");
 const express = require("express");
 const app = express();
 const path = require("path");
-const requestIp = require("request-ip");
-app.use(requestIp.mw());
 
 const port = process.env.PORT || "8000";
+
+app.use(cloudflare.restore());
 app.use(express.json());
 
 // App Configuration
@@ -17,7 +18,10 @@ app.set("view engine", "pug");
 
 //Return IP on index page
 app.get("/", (req, res) => {
-  const ip = req.clientIp;
+  // const ip = req.clientIp;
+  let ip = req.cf_ip;
+  // let ip = req.headers["cf-connecting-ip"] || req.headers["x-forwarded-for"];
+  // let ip = req.socket.remoteAddress;
   res.render("index", { title: "IP", message: `${ip}` });
 });
 
