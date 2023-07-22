@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
   let ip = req.cf_ip;
   // let ip = req.headers["cf-connecting-ip"] || req.headers["x-forwarded-for"];
   // let ip = req.socket.remoteAddress;
-  res.render("index", { title: "IP", message: `${ip}` });
+  res.render("index", { title: "YetAnotherWhatsMyIP", message: `${ip}` });
 });
 
 // 404
