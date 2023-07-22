@@ -1,7 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900);
 
+/*
+#64ed68
+#121212!important
+#363636
+*/
+
 body {
-  background-color: #ffffff;
+  background-color: #121212;
   padding: 0px;
   margin: 0px;
   font-family: "Source Sans Pro", sans-serif;
@@ -14,9 +20,9 @@ body {
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
-  background-color: black;
-  border: solid black;
-  border-width: 12px 18px;
+  background-color: #363636;
+  border: solid #363636;
+  border-width: 16px 18px;
   border-radius: 0.4vw;
 }
 
@@ -26,6 +32,7 @@ footer {
   bottom: 0.5em;
   width: 100%;
   text-align: center;
+  color: white;
 }
 
 h1 {
@@ -42,8 +49,8 @@ p {
 }
 
 .hub span:nth-child(2) {
-  background: #3ae3ff;
-  color: #000000;
+  background: #64ed68;
+  color: #363636;
   border-radius: 0.4vw;
   padding: 5px 15px 8px;
   display: inline-block;
