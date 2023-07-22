@@ -48,6 +48,10 @@ p {
   font-size: 0.7rem;
 }
 
+.ip {
+  padding-right: 14px;
+}
+
 .hub span:nth-child(2) {
   background: #64ed68;
   color: #363636;
