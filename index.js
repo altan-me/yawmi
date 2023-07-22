@@ -2,6 +2,7 @@
 
 const cloudflare = require("cloudflare-express");
 const express = require("express");
+const favicon = require("express-favicon");
 const app = express();
 const path = require("path");
 
@@ -9,6 +10,7 @@ const port = process.env.PORT || "8000";
 
 app.use(cloudflare.restore());
 app.use(express.json());
+app.use(favicon(__dirname + "/views/favicon.ico"));
 
 // App Configuration
 app.set("views", path.join(__dirname, "views"));
