@@ -17,7 +17,11 @@ app.use((req, res, next) => {
   // Content-Security-Policy
   res.setHeader(
     "Content-Security-Policy",
-    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self';"
+    "default-src 'self';" +
+      "script-src 'self' https://static.cloudflareinsights.com;" + // Add other script sources here
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;" + // Add Google Fonts
+      "img-src 'self';"
+    // Add other directives as needed
   );
   // X-Frame-Options
   res.setHeader("X-Frame-Options", "SAMEORIGIN");
