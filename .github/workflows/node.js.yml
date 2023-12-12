@@ -23,10 +23,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm i
-      - name: Start or Restart Yawmi
+      - name: Manage Yawmi Process
         run: |
-          if ! pm2 list | grep -q yawmi; then
-            pm2 start --name 'yawmi' index.js
+          if ! pm2 list | grep -q 'yawmi'; then
+            echo "Starting yawmi for the first time"
+            pm2 start index.js --name yawmi
           else
+            echo "Yawmi already running. Restarting..."
             pm2 restart yawmi
           fi
