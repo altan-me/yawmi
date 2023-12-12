@@ -19,13 +19,10 @@ app.use((req, res, next) => {
     "Content-Security-Policy",
     "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self';"
   );
-
   // X-Frame-Options
   res.setHeader("X-Frame-Options", "SAMEORIGIN");
-
   // Referrer-Policy
   res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
-
   next();
 });
 
