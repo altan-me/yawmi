@@ -12,6 +12,23 @@ app.use(cloudflare.restore());
 app.use(express.json());
 app.use(favicon(__dirname + "/views/favicon.ico"));
 
+// Set security headers
+app.use((req, res, next) => {
+  // Content-Security-Policy
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self';"
+  );
+
+  // X-Frame-Options
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+
+  // Referrer-Policy
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+
+  next();
+});
+
 // App Configuration
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
@@ -26,6 +43,12 @@ app.get("/", (req, res) => {
   // let ip = req.socket.remoteAddress;
   res.render("index", { title: "YetAnotherWhatsMyIP", message: `${ip}` });
 });
+
+// Serve security.txt
+app.use(
+  "/.well-known",
+  express.static(path.join(__dirname, "public", ".well-known"))
+);
 
 // 404
 app.use(function (req, res, next) {
