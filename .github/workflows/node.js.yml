@@ -23,4 +23,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm i
-      - run: pm2 restart yawmi
+      - name: Start or Restart Yawmi
+        run: |
+          if ! pm2 list | grep -q yawmi; then
+            pm2 start --name 'yawmi' index.js
+          else
+            pm2 restart yawmi
+          fi
