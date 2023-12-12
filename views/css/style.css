@@ -51,6 +51,11 @@ p {
   -khtml-user-select: none;
 }
 
+#click:active {
+  transition: background-color 0.1s;
+  background-color: #2888d9 !important;
+}
+
 .ip {
   cursor: pointer;
 }
