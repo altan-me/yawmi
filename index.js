@@ -13,18 +13,18 @@ app.use(express.json());
 app.use(favicon(__dirname + "/views/favicon.ico"));
 
 // Set security headers
-app.use((req, res, next) => {
-  // Content-Security-Policy
-  res.setHeader(
-    "Content-Security-Policy",
-    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self';"
-  );
-  // X-Frame-Options
-  res.setHeader("X-Frame-Options", "SAMEORIGIN");
-  // Referrer-Policy
-  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
-  next();
-});
+// app.use((req, res, next) => {
+//   // Content-Security-Policy
+//   res.setHeader(
+//     "Content-Security-Policy",
+//     "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self';"
+//   );
+//   // X-Frame-Options
+//   res.setHeader("X-Frame-Options", "SAMEORIGIN");
+//   // Referrer-Policy
+//   res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+//   next();
+// });
 
 // App Configuration
 app.set("views", path.join(__dirname, "views"));
