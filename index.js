@@ -18,8 +18,9 @@ app.use((req, res, next) => {
   res.setHeader(
     "Content-Security-Policy",
     "default-src 'self';" +
-      "script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com;" +
+      "script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://track.app.altan.me;" +
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;" +
+      "connect-src 'self' https://track.app.altan.me;" +
       "img-src 'self';" +
       "font-src 'self' https://fonts.gstatic.com;" // Add font-src directive
     // Add other directives as needed
